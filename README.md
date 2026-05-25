@@ -2,7 +2,7 @@
 
 A Flutter package for smooth "add to cart" style fly animations. An item launches from any widget and flies in an arc to a target widget (cart, favorites, etc).
 
-<video src="https://raw.githubusercontent.com/pRpJ132/collection_animated_flutter/main/example-video.mp4" controls width="300"></video>
+[Watch demo video](https://raw.githubusercontent.com/pRpJ132/collection_animated_flutter/main/example-video.mp4)
 
 ## Features
 
