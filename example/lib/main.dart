@@ -33,7 +33,7 @@ class _DemoPageState extends State<DemoPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fly Animation"),
+        title: const Text("Collection Animation"),
         actions: [
           Padding(
             padding: const EdgeInsets.all(12),

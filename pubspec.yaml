@@ -1,7 +1,7 @@
 name: collection_animated
-description: "A new Flutter package project."
+description: "Collection Animated flutter package"
 version: 0.0.1
-homepage:
+homepage: https://github.com/pRpJ132/collection_animated_flutter
 
 environment:
   sdk: ^3.11.5
