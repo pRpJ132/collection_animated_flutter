@@ -2,8 +2,6 @@
 
 A Flutter package for smooth "add to cart" style fly animations. An item launches from any widget and flies in an arc to a target widget (cart, favorites, etc).
 
-[Watch demo video](https://github.com/pRpJ132/collection_animated_flutter/blob/main/example-video.gif)
-
 ## Features
 
 - **Launch angle** — control the exact direction the item flies out (0–360°)
