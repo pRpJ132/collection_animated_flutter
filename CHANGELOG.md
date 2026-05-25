@@ -6,3 +6,6 @@
 
 ## 0.0.3
 * Correction of unnecessary calculations
+
+## 0.0.4
+* A new opacity meter has been added to animation.

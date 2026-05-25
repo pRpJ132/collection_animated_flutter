@@ -18,9 +18,13 @@ class CollectionAnimated {
   final double backOffset;
   final double sideOffset;
   final double arcHeight;
+
   final Duration launchDuration;
   final Duration flyDuration;
+
   final bool scaleAnimated;
+  final bool opacityAnimated;
+  
   final VoidCallback? onCompleted;
 
   const CollectionAnimated({
@@ -35,6 +39,7 @@ class CollectionAnimated {
     this.launchDuration = const Duration(milliseconds: 350),
     this.flyDuration = const Duration(milliseconds: 600),
     this.scaleAnimated = false,
+    this.opacityAnimated = false,
     this.onCompleted,
   });
 
@@ -68,24 +73,33 @@ class CollectionAnimated {
 
     final posNotifier = ValueNotifier<Offset>(start);
     final scaleNotifier = ValueNotifier<double>(1.0);
+    final opacityNotifier = ValueNotifier<double>(1.0);
 
     OverlayEntry overlayEntry = OverlayEntry(
       builder: (context) {
         return ValueListenableBuilder<Offset>(
           valueListenable: posNotifier,
           builder: (context, pos, _) {
-            return ValueListenableBuilder<double>(
-              valueListenable: scaleNotifier,
-              builder: (context, scale, _) {
-                return Positioned(
-                  left: pos.dx - 20,
-                  top: pos.dy - 20,
-                  child: Transform.scale(
+            return Positioned(
+              left: pos.dx - 20,
+              top: pos.dy - 20,
+              child: ValueListenableBuilder<double>(
+                valueListenable: scaleNotifier,
+                builder: (context, scale, _) {
+                  return Transform.scale(
                     scale: scaleAnimated ? scale : 1.0,
-                    child: IgnorePointer(child: flyWidget),
-                  ),
-                );
-              },
+                    child: IgnorePointer(child: ValueListenableBuilder<double>(
+                      valueListenable: opacityNotifier,
+                      builder: (context, opacityNotifierValue, _) {
+                        return Opacity(
+                          opacity: opacityAnimated ? opacityNotifierValue : 1.0,
+                          child: flyWidget
+                        );
+                      }
+                    )),
+                  );
+                }
+              ),
             );
           },
         );
@@ -119,7 +133,8 @@ class CollectionAnimated {
         lerpDouble(peak.dx, end.dx, t)! + arcPerpX * arc,
         lerpDouble(peak.dy, end.dy, t)! + arcPerpY * arc,
       );
-      scaleNotifier.value = lerpDouble(0.85, 0.4, t)!;
+      scaleNotifier.value = lerpDouble(1.0, 0.4, t)!;
+      opacityNotifier.value = lerpDouble(1.0, 0.2, t)!;
     }
 
     launchController.addListener(() {
@@ -128,7 +143,8 @@ class CollectionAnimated {
         lerpDouble(start.dx, peak.dx, t)!,
         lerpDouble(start.dy, peak.dy, t)!,
       );
-      scaleNotifier.value = lerpDouble(1.0, 0.85, t)!;
+      scaleNotifier.value = lerpDouble(0.4, 1.0, t)!;
+      opacityNotifier.value = lerpDouble(0.1, 1.0, t)!;
     });
 
     launchController.addStatusListener((status) {
