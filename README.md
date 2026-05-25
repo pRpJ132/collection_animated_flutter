@@ -16,13 +16,6 @@ A Flutter package for smooth "add to cart" style fly animations. An item launche
 
 ## Getting started
 
-Add the package to your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  collection_animated: ^1.0.0
-```
-
 Your State must use `TickerProviderStateMixin`:
 
 ```dart
@@ -135,6 +128,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 | `launchDuration` | `Duration` | `350ms` | Duration of the launch phase |
 | `flyDuration` | `Duration` | `600ms` | Duration of the flight phase |
 | `scaleAnimated` | `bool` | `false` | Whether the item shrinks during flight |
+| `opacityAnimated` | `bool` | `false` | Changes transparency during the palette |
 | `onCompleted` | `VoidCallback?` | `null` | Called when the animation completes |
 
 ## Additional information
