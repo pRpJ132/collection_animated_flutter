@@ -23,7 +23,7 @@ dependencies:
   collection_animated: ^1.0.0
 ```
 
-Your State must use `TickerProviderStateMixin` (or `SingleTickerProviderStateMixin`):
+Your State must use `TickerProviderStateMixin`:
 
 ```dart
 class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
@@ -139,6 +139,6 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 
 ## Additional information
 
-- **Issues & feature requests** — open an issue on [GitHub](https://github.com/your-username/collection_animated/issues)
+- **Issues & feature requests** — open an issue on [GitHub](https://github.com/pRpJ132/collection_animated_flutter)
 - **Contributions** — PRs are welcome! Please open an issue first to discuss what you'd like to change
 - **License** — MIT
