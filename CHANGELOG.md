@@ -9,3 +9,6 @@
 
 ## 0.0.4
 * A new opacity meter has been added to animation.
+
+## 0.0.5
+* Documentation fixes
