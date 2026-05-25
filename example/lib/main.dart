@@ -58,7 +58,7 @@ class _DemoPageState extends State<DemoPage> with TickerProviderStateMixin {
               backOffset: (25 + Random().nextInt(85 - 25 + 1)).toDouble(),
               sideOffset: (50 + Random().nextInt(145 - 50 + 1)).toDouble(),
               arcHeight: Random().nextBool() ? -(45 + Random().nextInt(155 - 45 + 1)).toDouble() : (45 + Random().nextInt(155 - 45 + 1)).toDouble(),
-              scaleAnimated: false,
+              scaleAnimated: true,
               opacityAnimated: true,
             ).startAnimation();
           },

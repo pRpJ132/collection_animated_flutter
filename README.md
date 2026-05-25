@@ -11,6 +11,7 @@ A Flutter package for smooth "add to cart" style fly animations. An item launche
 - **Side offset** — lateral drift during the launch phase
 - **Arc height** — how high the item arcs on its way to the target
 - **Scale animation** — optional shrink effect during flight
+- **Opacity animation** — optional opacity effect during flight
 - **onCompleted callback** — get notified when the animation finishes
 - **GlobalKey-based** — no widget wrapping needed, just attach keys
 

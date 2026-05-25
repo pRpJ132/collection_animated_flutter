@@ -83,22 +83,24 @@ class CollectionAnimated {
             return Positioned(
               left: pos.dx - 20,
               top: pos.dy - 20,
-              child: ValueListenableBuilder<double>(
-                valueListenable: scaleNotifier,
-                builder: (context, scale, _) {
-                  return Transform.scale(
-                    scale: scaleAnimated ? scale : 1.0,
-                    child: IgnorePointer(child: ValueListenableBuilder<double>(
-                      valueListenable: opacityNotifier,
-                      builder: (context, opacityNotifierValue, _) {
-                        return Opacity(
-                          opacity: opacityAnimated ? opacityNotifierValue : 1.0,
-                          child: flyWidget
-                        );
-                      }
-                    )),
-                  );
-                }
+              child: RepaintBoundary(
+                child: ValueListenableBuilder<double>(
+                  valueListenable: scaleNotifier,
+                  builder: (context, scale, _) {
+                    return Transform.scale(
+                      scale: scaleAnimated ? scale : 1.0,
+                      child: IgnorePointer(child: ValueListenableBuilder<double>(
+                        valueListenable: opacityNotifier,
+                        builder: (context, opacityNotifierValue, _) {
+                          return Opacity(
+                            opacity: opacityAnimated ? opacityNotifierValue : 1.0,
+                            child: flyWidget
+                          );
+                        }
+                      )),
+                    );
+                  }
+                ),
               ),
             );
           },
@@ -133,7 +135,7 @@ class CollectionAnimated {
         lerpDouble(peak.dx, end.dx, t)! + arcPerpX * arc,
         lerpDouble(peak.dy, end.dy, t)! + arcPerpY * arc,
       );
-      scaleNotifier.value = lerpDouble(1.0, 0.4, t)!;
+      scaleNotifier.value = lerpDouble(1.0, 0.6, t)!;
       opacityNotifier.value = lerpDouble(1.0, 0.2, t)!;
     }
 
