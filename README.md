@@ -10,8 +10,14 @@ A Flutter package for smooth "add to cart" style fly animations. An item launche
 - **Back offset** — how far the item travels before heading to the target
 - **Side offset** — lateral drift during the launch phase
 - **Arc height** — how high the item arcs on its way to the target
+- **Launch duration** — control the speed of the initial launch phase
+- **Fly duration** — control the speed of the flight phase to the target
 - **Scale animation** — optional shrink effect during flight
+- **Scale range (launch)** — customize start and end scale during the launch phase
+- **Scale range (fly)** — customize start and end scale during the fly phase
 - **Opacity animation** — optional opacity effect during flight
+- **Opacity range (launch)** — customize start and end opacity during the launch phase
+- **Opacity range (fly)** — customize start and end opacity during the fly phase
 - **onCompleted callback** — get notified when the animation finishes
 - **GlobalKey-based** — no widget wrapping needed, just attach keys
 
@@ -129,7 +135,15 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 | `launchDuration` | `Duration` | `350ms` | Duration of the launch phase |
 | `flyDuration` | `Duration` | `600ms` | Duration of the flight phase |
 | `scaleAnimated` | `bool` | `false` | Whether the item shrinks during flight |
-| `opacityAnimated` | `bool` | `false` | Changes transparency during the palette |
+| `opacityAnimated` | `bool` | `false` | Changes transparency during the flight |
+| `opacityValueStart1` | `double` | `0.1` | Opacity at the start of the launch phase |
+| `opacityValueEnd1` | `double` | `1.0` | Opacity at the end of the launch phase |
+| `opacityValueStart2` | `double` | `1.0` | Opacity at the start of the fly phase |
+| `opacityValueEnd2` | `double` | `0.3` | Opacity at the end of the fly phase |
+| `scaleValueStart1` | `double` | `0.1` | Scale at the start of the launch phase |
+| `scaleValueEnd1` | `double` | `1.0` | Scale at the end of the launch phase |
+| `scaleValueStart2` | `double` | `1.0` | Scale at the start of the fly phase |
+| `scaleValueEnd2` | `double` | `0.5` | Scale at the end of the fly phase |
 | `onCompleted` | `VoidCallback?` | `null` | Called when the animation completes |
 
 ## Additional information

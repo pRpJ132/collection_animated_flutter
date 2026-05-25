@@ -12,3 +12,6 @@
 
 ## 0.0.5
 * Documentation fixes
+
+## 0.0.6
+* New parameters for working with animation have been added.
