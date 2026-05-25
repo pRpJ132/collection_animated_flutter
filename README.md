@@ -136,14 +136,10 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 | `flyDuration` | `Duration` | `600ms` | Duration of the flight phase |
 | `scaleAnimated` | `bool` | `false` | Whether the item shrinks during flight |
 | `opacityAnimated` | `bool` | `false` | Changes transparency during the flight |
-| `opacityValueStart1` | `double` | `0.1` | Opacity at the start of the launch phase |
-| `opacityValueEnd1` | `double` | `1.0` | Opacity at the end of the launch phase |
-| `opacityValueStart2` | `double` | `1.0` | Opacity at the start of the fly phase |
-| `opacityValueEnd2` | `double` | `0.3` | Opacity at the end of the fly phase |
-| `scaleValueStart1` | `double` | `0.1` | Scale at the start of the launch phase |
-| `scaleValueEnd1` | `double` | `1.0` | Scale at the end of the launch phase |
-| `scaleValueStart2` | `double` | `1.0` | Scale at the start of the fly phase |
-| `scaleValueEnd2` | `double` | `0.5` | Scale at the end of the fly phase |
+| `opacityPhase1` | `CollectionAnimatedValues` | `begin: 0.1, end: 1.0` | Opacity range during the launch phase |
+| `opacityPhase2` | `CollectionAnimatedValues` | `begin: 1.0, end: 0.3` | Opacity range during the fly phase |
+| `scalePhase1` | `CollectionAnimatedValues` | `begin: 0.1, end: 1.0` | Scale range during the launch phase |
+| `scalePhase2` | `CollectionAnimatedValues` | `begin: 1.0, end: 0.5` | Scale range during the fly phase |
 | `onCompleted` | `VoidCallback?` | `null` | Called when the animation completes |
 
 ## Additional information

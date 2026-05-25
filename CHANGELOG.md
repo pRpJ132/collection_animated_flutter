@@ -15,3 +15,6 @@
 
 ## 0.0.6
 * New parameters for working with animation have been added.
+
+## 0.0.7
+* Data type changes for size and opacity animation

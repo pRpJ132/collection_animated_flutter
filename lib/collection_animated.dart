@@ -5,6 +5,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+class CollectionAnimatedValues {
+  final double begin;
+  final double end;
+  const CollectionAnimatedValues({
+    required this.begin,
+    required this.end,
+  });
+}
+
 class CollectionAnimated {
   final TickerProvider vsync;
 
@@ -25,17 +34,11 @@ class CollectionAnimated {
   final bool scaleAnimated;
   final bool opacityAnimated;
 
-  final double opacityValueStart1;
-  final double opacityValueEnd1;
+  final CollectionAnimatedValues opacityPhase1;
+  final CollectionAnimatedValues opacityPhase2;
 
-  final double opacityValueStart2;
-  final double opacityValueEnd2;
-
-  final double scaleValueStart1;
-  final double scaleValueEnd1;
-
-  final double scaleValueStart2;
-  final double scaleValueEnd2;
+  final CollectionAnimatedValues scalePhase1;
+  final CollectionAnimatedValues scalePhase2;
   
   final VoidCallback? onCompleted;
 
@@ -53,17 +56,11 @@ class CollectionAnimated {
     this.scaleAnimated = false,
     this.opacityAnimated = false,
 
-    this.opacityValueStart1 = 0.1,
-    this.opacityValueEnd1 = 1.0,
+    this.opacityPhase1 = const CollectionAnimatedValues(begin: 0.1, end: 1.0),
+    this.opacityPhase2 = const CollectionAnimatedValues(begin: 1.0, end: 0.3),
 
-    this.opacityValueStart2 = 1.0,
-    this.opacityValueEnd2 = 0.3,
-
-    this.scaleValueStart1 = 0.1,
-    this.scaleValueEnd1 = 1.0,
-
-    this.scaleValueStart2 = 1.0,
-    this.scaleValueEnd2 = 0.5,
+    this.scalePhase1 = const CollectionAnimatedValues(begin: 0.1, end: 1.0),
+    this.scalePhase2 = const CollectionAnimatedValues(begin: 1.0, end: 0.5),
 
     this.onCompleted,
   });
@@ -160,8 +157,8 @@ class CollectionAnimated {
         lerpDouble(peak.dx, end.dx, t)! + arcPerpX * arc,
         lerpDouble(peak.dy, end.dy, t)! + arcPerpY * arc,
       );
-      scaleNotifier.value = lerpDouble(scaleValueStart2, scaleValueEnd2, t)!;
-      opacityNotifier.value = lerpDouble(opacityValueStart2, opacityValueEnd2, t)!;
+      scaleNotifier.value = lerpDouble(scalePhase2.begin, scalePhase2.end, t)!;
+      opacityNotifier.value = lerpDouble(opacityPhase2.begin, opacityPhase2.end, t)!;
     }
 
     launchController.addListener(() {
@@ -170,8 +167,8 @@ class CollectionAnimated {
         lerpDouble(start.dx, peak.dx, t)!,
         lerpDouble(start.dy, peak.dy, t)!,
       );
-      scaleNotifier.value = lerpDouble(scaleValueStart1, scaleValueEnd1, t)!;
-      opacityNotifier.value = lerpDouble(opacityValueStart1, opacityValueEnd1, t)!;
+      scaleNotifier.value = lerpDouble(scalePhase1.begin, scalePhase1.end, t)!;
+      opacityNotifier.value = lerpDouble(opacityPhase1.begin, opacityPhase1.end, t)!;
     });
 
     launchController.addStatusListener((status) {
