@@ -60,41 +60,30 @@ class CollectionAnimated {
       start.dy + dirY * backOffset + perpY * sideOffset,
     );
 
-    late AnimationController launchController;
-    late AnimationController flyController;
-
-    launchController = AnimationController(vsync: vsync, duration: launchDuration);
-    flyController = AnimationController(vsync: vsync, duration: flyDuration);
+    final AnimationController launchController = AnimationController(vsync: vsync, duration: launchDuration);
+    final AnimationController flyController = AnimationController(vsync: vsync, duration: flyDuration);
 
     final launchCurve = CurvedAnimation(parent: launchController, curve: Curves.easeOut);
     final flyCurve = CurvedAnimation(parent: flyController, curve: Curves.easeInOut);
 
     final posNotifier = ValueNotifier<Offset>(start);
-    final rotNotifier = ValueNotifier<double>(0);
     final scaleNotifier = ValueNotifier<double>(1.0);
 
-    OverlayEntry? overlayEntry;
-
-    overlayEntry = OverlayEntry(
+    OverlayEntry overlayEntry = OverlayEntry(
       builder: (context) {
         return ValueListenableBuilder<Offset>(
           valueListenable: posNotifier,
           builder: (context, pos, _) {
             return ValueListenableBuilder<double>(
-              valueListenable: rotNotifier,
-              builder: (context, rot, _) {
-                return ValueListenableBuilder<double>(
-                  valueListenable: scaleNotifier,
-                  builder: (context, scale, _) {
-                    return Positioned(
-                      left: pos.dx - 20,
-                      top: pos.dy - 20,
-                      child: Transform.scale(
-                        scale: scaleAnimated ? scale : 1.0,
-                        child: IgnorePointer(child: flyWidget),
-                      ),
-                    );
-                  },
+              valueListenable: scaleNotifier,
+              builder: (context, scale, _) {
+                return Positioned(
+                  left: pos.dx - 20,
+                  top: pos.dy - 20,
+                  child: Transform.scale(
+                    scale: scaleAnimated ? scale : 1.0,
+                    child: IgnorePointer(child: flyWidget),
+                  ),
                 );
               },
             );
@@ -106,10 +95,8 @@ class CollectionAnimated {
     overlay.insert(overlayEntry);
 
     void cleanup() {
-      overlayEntry?.remove();
-      overlayEntry = null;
+      overlayEntry.remove();
       posNotifier.dispose();
-      rotNotifier.dispose();
       scaleNotifier.dispose();
       onCompleted?.call();
     }
@@ -132,7 +119,6 @@ class CollectionAnimated {
         lerpDouble(peak.dx, end.dx, t)! + arcPerpX * arc,
         lerpDouble(peak.dy, end.dy, t)! + arcPerpY * arc,
       );
-      rotNotifier.value = pi + t * pi;
       scaleNotifier.value = lerpDouble(0.85, 0.4, t)!;
     }
 
@@ -142,7 +128,6 @@ class CollectionAnimated {
         lerpDouble(start.dx, peak.dx, t)!,
         lerpDouble(start.dy, peak.dy, t)!,
       );
-      rotNotifier.value = t * pi;
       scaleNotifier.value = lerpDouble(1.0, 0.85, t)!;
     });
 
