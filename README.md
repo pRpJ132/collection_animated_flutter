@@ -18,6 +18,8 @@ A Flutter package for smooth "add to cart" style fly animations. An item launche
 - **Opacity animation** — optional opacity effect during flight
 - **Opacity range (launch)** — customize start and end opacity during the launch phase
 - **Opacity range (fly)** — customize start and end opacity during the fly phase
+- **Top shift** — vertical offset applied to the flying widget's position on the overlay
+- **Left shift** — horizontal offset applied to the flying widget's position on the overlay
 - **onCompleted callback** — get notified when the animation finishes
 - **GlobalKey-based** — no widget wrapping needed, just attach keys
 
@@ -140,6 +142,8 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 | `opacityPhase2` | `CollectionAnimatedValues` | `begin: 1.0, end: 0.3` | Opacity range during the fly phase |
 | `scalePhase1` | `CollectionAnimatedValues` | `begin: 0.1, end: 1.0` | Scale range during the launch phase |
 | `scalePhase2` | `CollectionAnimatedValues` | `begin: 1.0, end: 0.5` | Scale range during the fly phase |
+| `topShift` | `double` | `20` | Vertical offset for the flying widget's overlay position |
+| `leftShift` | `double` | `20` | Horizontal offset for the flying widget's overlay position |
 | `onCompleted` | `VoidCallback?` | `null` | Called when the animation completes |
 
 ## Additional information

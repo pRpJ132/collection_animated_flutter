@@ -18,3 +18,7 @@
 
 ## 0.0.7
 * Data type changes for size and opacity animation
+
+## 0.0.8
+* New options added
+* New example

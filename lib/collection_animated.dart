@@ -39,6 +39,9 @@ class CollectionAnimated {
 
   final CollectionAnimatedValues scalePhase1;
   final CollectionAnimatedValues scalePhase2;
+
+  final double topShift;
+  final double leftShift;
   
   final VoidCallback? onCompleted;
 
@@ -61,6 +64,9 @@ class CollectionAnimated {
 
     this.scalePhase1 = const CollectionAnimatedValues(begin: 0.1, end: 1.0),
     this.scalePhase2 = const CollectionAnimatedValues(begin: 1.0, end: 0.5),
+
+    this.topShift = 20,
+    this.leftShift = 20,
 
     this.onCompleted,
   });
@@ -103,8 +109,8 @@ class CollectionAnimated {
           valueListenable: posNotifier,
           builder: (context, pos, _) {
             return Positioned(
-              left: pos.dx - 20,
-              top: pos.dy - 20,
+              left: pos.dx + -45,
+              top: pos.dy + -75,
               child: RepaintBoundary(
                 child: ValueListenableBuilder<double>(
                   valueListenable: scaleNotifier,
